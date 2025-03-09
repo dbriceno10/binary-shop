@@ -1,7 +1,12 @@
 import Card from './card.js';
 
-const CardContainer = (productos, textA, textB, isCart) => {
-  const contenedorProductos = document.getElementById('contenedor-productos');
+const CardContainer = (
+  contenedorProductos,
+  productos,
+  textA,
+  textB,
+  isCart
+) => {
   productos.forEach((producto) => {
     contenedorProductos.appendChild(Card(producto, textA, textB, isCart));
   });

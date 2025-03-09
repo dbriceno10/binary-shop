@@ -20,22 +20,38 @@ const updateCard = async () => {
   // CardContainer(productos, 'Eliminar del carrito', '', 'true');
 };
 
-document.addEventListener('DOMContentLoaded', async () => {
-  const header = document.getElementById('header');
-  header.appendChild(Header());
-  const productos = await getCart();
+const render = () => {
+  const productos = getCart();
   if (productos.length) {
-    CardContainer(productos, 'Eliminar del carrito', '', 'true');
+    const contenedorProductos = document.getElementById('contenedor-productos');
+    contenedorProductos.innerHTML = '';
+    CardContainer(
+      contenedorProductos,
+      productos,
+      'Eliminar del carrito',
+      '',
+      'true'
+    );
     productos.forEach((producto) => {
       addEventListenersActionA(producto, addProductToCard);
-      addEventListenersRemoveToCard(producto, removeProduct);
-      addEventListenersAddToCard(producto, (prod) => {
-        addProduct(prod);
-        updateCard();
+      addEventListenersRemoveToCard(producto, (prod) => {
+        removeProduct(prod);
+        render();
+      });
+      addEventListenersAddToCard(producto, async (prod) => {
+        await addProduct(prod);
+        render();
       });
     });
   } else {
     const contenedor = document.getElementById('contenedor-productos');
     contenedor.innerHTML = '<h2>No hay productos en el carrito</h2>';
   }
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  const header = document.getElementById('header');
+  header.appendChild(Header());
+  // const productos = getCart();
+  render();
 });
