@@ -34,7 +34,7 @@ form.addEventListener('submit', async (event) => {
       creditCard,
       address,
       ccv,
-      expiration,
+      expirationDate,
     });
     if (response) {
       form.reset();

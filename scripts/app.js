@@ -1,14 +1,14 @@
 import { getProducts } from './dao.js';
+import { addProductToCard } from './repository.js';
 import CardContainer from '../components/cardContainer.js';
-import Header from '../components/header.js';
+import Header, { logoutEvent } from '../components/header.js';
+import { addEventListenersActionA } from '../components/card.js';
 
 const user = JSON.parse(localStorage.getItem('user'));
 
-if(!user) {
+if (!user) {
   window.location.href = '/login.html';
-} 
-
-let productos = await getProducts();
+}
 
 const contenedorCarrito = document.getElementById('carrito-contenedor');
 
@@ -90,7 +90,13 @@ const agregarAlCarrito = (prodId) => {
 // };
 
 //EL HTML
-const header = document.getElementById('header');
-header.appendChild(Header());
-
-CardContainer(productos, agregarAlCarrito);
+document.addEventListener('DOMContentLoaded', async () => {
+  const header = document.getElementById('header');
+  header.appendChild(Header());
+  logoutEvent();
+  let productos = await getProducts();
+  CardContainer(productos, 'Agregar al carrito');
+  productos.forEach((producto) => {
+    addEventListenersActionA(producto, addProductToCard);
+  });
+});

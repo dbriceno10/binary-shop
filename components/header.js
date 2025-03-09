@@ -1,16 +1,36 @@
+import { roles } from '../scripts/constants.js';
+
 const Header = () => {
   const user = JSON.parse(localStorage.getItem('user'));
   const div = document.createElement('div');
   div.className = 'headerAuth';
   let options = '';
   if (!user) {
-    options = `<div><a href='../login.html'><button class="baseBtn">Login</button></a><a href='../register.html'><button class="baseBtn">Registro</button></a></div>`;
+    options = `<a href='../login.html'><button class="baseBtn">Login</button></a><a href='../register.html'><button class="baseBtn">Registro</button></a>`;
+  } else {
+    if (user.rol === roles.BUYER) {
+      options = `<a href='../index.html'><button class="baseBtn">Inicio</button></a><a href='../cart.html'><button class="baseBtn">Ir al carrito</button></a><button class="baseBtn" id="logout">Cerrar sesión</button>`;
+    }
   }
   div.innerHTML = `
-    <a href='/'><img src="../assets/logo-full.png" alt="binary-shop" id="binary-shop"></a>
-    ${options}
+    <a href='/'><img src="../assets/logo-full.png" alt="binary-shop" title="Volver al inicio" id="binary-shop"></a>
+    <div>${options}</div>
   `;
   return div;
+};
+
+export const logoutEvent = () => {
+  const logout = document.getElementById('logout');
+  if (logout) {
+    logout.addEventListener('click', () => {
+      const confirmed = confirm('¿Estás seguro de cerrar sesión?');
+      if (confirmed) {
+        localStorage.removeItem('user');
+        localStorage.removeItem('carrito');
+        window.location.href = '/login.html';
+      }
+    });
+  }
 };
 
 export default Header;

@@ -17,6 +17,15 @@
   flex-wrap: wrap;
 }
 
+.cartButtons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  button {
+    width: 100px;
+  }
+}
+
 .producto {
   width: 300px;
   height: 400px;
@@ -41,13 +50,12 @@
 
 
 .descripcion {
-  font-size: 10pt;
-  line-height: 12pt;
-  font-weight: 300;
+  font-size: 12px;
 }
 
 .precioProducto {
-  font-weight: 700;
+font-size: 12px;
+font-weight: bold;
 }
 .boton-agregar {
   background-color: rgb(69, 141, 27);

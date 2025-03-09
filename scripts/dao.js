@@ -39,3 +39,5 @@ export const loginUser = async (username, password) => {
     return false;
   }
 };
+
+export const getCart = () => JSON.parse(localStorage.getItem('carrito')) || [];
