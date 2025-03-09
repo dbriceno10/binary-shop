@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Ruta del archivo JSON
-const filePath = path.join(__dirname, 'productos.json');
+const filePath = path.join(__dirname, '../database/productos.json');
 
 // Leer el archivo JSON
 fs.readFile(filePath, 'utf8', (err, data) => {
@@ -15,10 +15,19 @@ fs.readFile(filePath, 'utf8', (err, data) => {
   let productos = JSON.parse(data);
 
   // Agregar un id a cada elemento
-  productos = productos.map((producto, index) => ({
-    id: index + 1,
-    ...producto
-  }));
+  productos = productos.map((producto, index) => {
+    if (index > productos.length / 2) {
+      return {
+        sellerId: 4,
+        ...producto,
+      };
+    } else {
+      return {
+        sellerId: 3,
+        ...producto,
+      };
+    }
+  });
 
   // Convertir el objeto de vuelta a JSON
   const jsonString = JSON.stringify(productos, null, 2);

@@ -2,6 +2,12 @@ import { getProducts } from './dao.js';
 import CardContainer from '../components/cardContainer.js';
 import Header from '../components/header.js';
 
+const user = JSON.parse(localStorage.getItem('user'));
+
+if(!user) {
+  window.location.href = '/pages/login.html';
+} 
+
 let productos = await getProducts();
 
 const contenedorCarrito = document.getElementById('carrito-contenedor');

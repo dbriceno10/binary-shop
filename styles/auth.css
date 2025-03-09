@@ -32,3 +32,19 @@
   font-size: 2rem;
   margin-bottom: 20px;
 }
+
+.sellerInput {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  label {
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 16px;
+  }
+  input {
+    margin-right: 10px;
+  }
+}

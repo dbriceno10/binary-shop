@@ -1,27 +1,41 @@
 export const getProducts = async () => {
-  const data = await fetch('../database/productos.json');
-  const products = await data.json();
+  let products = [];
+  if (localStorage.getItem('products')) {
+    products = JSON.parse(localStorage.getItem('products'));
+  } else {
+    const data = await fetch('../database/productos.json');
+    products = await data.json();
+    localStorage.setItem('products', JSON.stringify(products));
+  }
   return products;
 };
 
 export const getUsers = async () => {
-  const response = await fetch('../database/usuarios.json');
-  const users = await response.json();
+  let users = [];
+  if (localStorage.getItem('users')) {
+    users = JSON.parse(localStorage.getItem('users'));
+  } else {
+    const response = await fetch('../database/usuarios.json');
+    users = await response.json();
+    localStorage.setItem('users', JSON.stringify(users));
+  }
   return users;
 };
 
-export const loginUser = async (username, password) => {
+export const findUser = async (username) => {
   const users = await getUsers();
-  const user = users.find(
-    (user) =>
-      (user.username === username || user.email === username) &&
-      user.password === password
-  );
-  if (user) {
+  const user = users.find((user) => user.username === username);
+  return user;
+};
+
+export const loginUser = async (username, password) => {
+  const user = await findUser(username);
+  if (user && user.password === password) {
     const { password, ...rest } = user;
-    return rest;
+    localStorage.setItem('user', JSON.stringify(rest));
+    return user;
   } else {
     alert('Usuario o contraseña incorrectos');
-    return null;
+    return false;
   }
 };
