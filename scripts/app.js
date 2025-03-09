@@ -95,8 +95,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   header.appendChild(Header());
   logoutEvent();
   let productos = await getProducts();
-  const contenedorProductos = document.getElementById('contenedor-productos');
-  CardContainer(contenedorProductos, productos, 'Agregar al carrito');
+  CardContainer(productos, 'Agregar al carrito');
   productos.forEach((producto) => {
     addEventListenersActionA(producto, addProductToCard);
   });

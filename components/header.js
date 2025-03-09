@@ -1,4 +1,5 @@
 import { roles } from '../scripts/constants.js';
+import { logout as logoutUser } from '../scripts/repository.js';
 
 const Header = () => {
   const user = JSON.parse(localStorage.getItem('user'));
@@ -25,9 +26,7 @@ export const logoutEvent = () => {
     logout.addEventListener('click', () => {
       const confirmed = confirm('¿Estás seguro de cerrar sesión?');
       if (confirmed) {
-        localStorage.removeItem('user');
-        localStorage.removeItem('carrito');
-        window.location.href = '/login.html';
+        logoutUser();
       }
     });
   }
