@@ -1,0 +1,77 @@
+.cardImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    height: 150px;
+    width: 150px;
+    margin-bottom: 10px;
+  }
+}
+
+#contenedor-productos {
+  /* max-width: 1200px; */
+  margin: 60px auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.producto {
+  width: 300px;
+  height: 400px;
+  overflow: hidden;
+  padding: 10px;
+  margin: 10px;
+  margin-bottom: 20px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background-color: var(--normalWhite);
+  /* cursor: pointer; */
+  p {
+    line-height: 1.8;
+  }
+  transition: 0.3s;
+}
+
+/* .producto:hover {
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.4);
+  background-color: var(--hoverCard)
+} */
+
+
+.descripcion {
+  font-size: 10pt;
+  line-height: 12pt;
+  font-weight: 300;
+}
+
+.precioProducto {
+  font-weight: 700;
+}
+.boton-agregar {
+  background-color: rgb(69, 141, 27);
+  color: white;
+  font-size: 18px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+}
+.boton-agregar:hover {
+  cursor: pointer;
+  font-weight: 900;
+}
+.boton-agregar:focus {
+  outline: none;
+}
+
+
+.cardInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 10px;
+  height: 230px;
+}

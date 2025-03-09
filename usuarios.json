@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "nombre": "Super",
+    "apellido": "Admin",
+    "email": "super@admin.com",
+    "username": "root",
+    "password": "dochouse",
+    "rol": "admin"
+  },
+  {
+    "id": 2,
+    "nombre": "Jhon",
+    "apellido": "Doe",
+    "email": "jhon@doe.com",
+    "username": "seller456",
+    "password": "Intro123",
+    "rol": "comprador"
+  },
+  {
+    "id": 3,
+    "nombre": "Jane",
+    "apellido": "Doe",
+    "email": "jane@doe.com",
+    "username": "dancabello",
+    "password": "J5*asdRD.s",
+    "rol": "vendedor"
+  }
+]

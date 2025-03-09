@@ -1,4 +1,5 @@
 import getProducts from './getProducts.js';
+import { truncateString } from './utils.js';
 let productos = await getProducts();
 
 const contenedorProductos = document.getElementById('contenedor-productos');
@@ -28,26 +29,26 @@ botonVaciar.addEventListener('click', () => {
 });
 
 //EL HTML
-// <p class="descripcion">${producto.desc}</p>
 // <p>Contenido: ${producto.contenido}</p>
 productos.forEach((producto) => {
   const div = document.createElement('div');
   div.classList.add('producto');
+  div.id = `producto${producto.id}`;
   div.innerHTML = `
-    <img src=${
-      producto.imagen ??
-      'https://images.ctfassets.net/t2436bmmnhys/3neQp23OKVECWA0RpgfoaE/b4a16575ea5c9a919837a31db91e0ba4/file.png?fm=webp&q=85'
-    } alt= "">
-    <h3>${producto.nombre}</h3>
-
+   <div class="cardImage">
+    <img src=${producto.imagen} alt=${producto.nombre} title=${producto.nombre}>
+   </div>
+   <div class="cardInfo">
+    <h4>${producto.nombre}</h4>
     <p class="precioProducto">Precio:$ ${producto.precio}</p>
-    <button id="agregar${
-      producto.id
-    }" class="boton-agregar">Agregar <i class="fas fa-shopping-cart"></i></button>
+    <p class="descripcion">${truncateString(producto.descripcion, 80)}</p>
+    <button id="agregar${producto.id}" class="baseBtn">Agregar</button>
+    <button id="comprar${producto.id}" class="baseBtn">Comprar</button>
+   </div>
     `;
   contenedorProductos.appendChild(div);
 
-  //DOM:
+  // DOM:
   const boton = document.getElementById(`agregar${producto.id}`);
 
   boton.addEventListener('click', () => {
