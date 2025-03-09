@@ -31,3 +31,17 @@ export const validatePassword = (password, password2) => {
   }
   return '';
 };
+
+export const financialFormat = ({
+  amount,
+  format = 'en-US',
+  style = 'currency',
+  currency = 'USD',
+  maximumFractionDigits = 2,
+}) => {
+  return new Intl.NumberFormat(format, {
+    style,
+    currency,
+    maximumFractionDigits,
+  }).format(amount);
+};

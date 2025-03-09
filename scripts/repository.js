@@ -90,22 +90,41 @@ export const clearCart = () => {
   }
 };
 
-export const decreaseQty = async (product) => {
-  const products = await getProducts();
-  const prod = products.find((prod) => prod.id === product.id);
-  if (product.cantidad >= 1) {
-    prod.cantidad--;
-  } else {
-    prod.cantidad = 0;
+export const buyProduct = async (product) => {
+  const isConfirmed = confirm('¿Estás seguro de comprar el producto?');
+  if (isConfirmed) {
+    const products = await getProducts();
+    const prod = products.find((prod) => prod.id === product.id);
+    if (product.cantidad >= 1) {
+      prod.cantidad--;
+    } else {
+      prod.cantidad = 0;
+    }
+    localStorage.setItem('products', JSON.stringify(products));
+    alert(
+      'Su compra se ha cargado a su tarjeta de credito exitosamente, gracias por su compra'
+    );
   }
-  localStorage.setItem('products', JSON.stringify(products));
 };
 
-export const buyProducts = () => {
+export const buyProducts = async (cartProducts) => {
   const isConfirmed = confirm('¿Estás seguro de comprar los productos?');
   if (isConfirmed) {
+    const products = await getProducts();
+    cartProducts.forEach((prod) => {
+      const product = products.find((product) => product.id === prod.id);
+      const newQty = product.cantidad - prod.cantidad;
+      if (newQty <= 0) {
+        product.cantidad = 0;
+      } else {
+        product.cantidad = newQty;
+      }
+    });
+    localStorage.setItem('products', JSON.stringify(products));
     localStorage.removeItem('carrito');
-    alert('Compra realizada con éxito');
+    alert(
+      'Su compra se ha cargado a su tarjeta de credito exitosamente, gracias por su compra'
+    );
   }
 };
 

@@ -1,4 +1,4 @@
-import { truncateString } from '../scripts/utils.js';
+import { truncateString, financialFormat } from '../scripts/utils.js';
 
 const Card = (producto, textA = '', textB = '', isCart = '') => {
   const div = document.createElement('div');
@@ -13,7 +13,9 @@ const Card = (producto, textA = '', textB = '', isCart = '') => {
    </div>
    <div class="cardInfo">
     <h4>${producto.nombre}</h4>
-    <p class="precioProducto">Precio: ${producto.precio}</p>
+    <p class="precioProducto">Precio: ${financialFormat({
+      amount: producto.precio,
+    })}</p>
     <p class="precioProducto">Cantidad: ${producto.cantidad}</p>
     <p class="descripcion">${truncateString(producto.descripcion, 80)}</p>
    ${isCart && cartBtns}

@@ -1,0 +1,18 @@
+#cartButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  button {
+    margin: 10px;
+    min-width: 200px;
+  }
+}
+
+#resume {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
