@@ -1,8 +1,8 @@
-import getProducts from './getProducts.js';
-import { truncateString } from './utils.js';
-let productos = await getProducts();
+import { getProducts } from './dao.js';
+import CardContainer from '../components/cardContainer.js';
+import Header from '../components/header.js';
 
-const contenedorProductos = document.getElementById('contenedor-productos');
+let productos = await getProducts();
 
 const contenedorCarrito = document.getElementById('carrito-contenedor');
 
@@ -26,35 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
 botonVaciar.addEventListener('click', () => {
   carrito.length = 0;
   actualizarCarrito();
-});
-
-//EL HTML
-// <p>Contenido: ${producto.contenido}</p>
-productos.forEach((producto) => {
-  const div = document.createElement('div');
-  div.classList.add('producto');
-  div.id = `producto${producto.id}`;
-  div.innerHTML = `
-   <div class="cardImage">
-    <img src=${producto.imagen} alt=${producto.nombre} title=${producto.nombre}>
-   </div>
-   <div class="cardInfo">
-    <h4>${producto.nombre}</h4>
-    <p class="precioProducto">Precio:$ ${producto.precio}</p>
-    <p class="descripcion">${truncateString(producto.descripcion, 80)}</p>
-    <button id="agregar${producto.id}" class="baseBtn">Agregar</button>
-    <button id="comprar${producto.id}" class="baseBtn">Comprar</button>
-   </div>
-    `;
-  contenedorProductos.appendChild(div);
-
-  // DOM:
-  const boton = document.getElementById(`agregar${producto.id}`);
-
-  boton.addEventListener('click', () => {
-    agregarAlCarrito(producto.id);
-    //
-  });
 });
 
 //AGREGO AL CARRITO
@@ -106,10 +77,14 @@ const actualizarCarrito = () => {
   });
 
   contadorCarrito.innerText = carrito.length; // actualiza con la longitud del carrito
-
-  console.log(carrito);
   precioTotal.innerText = carrito.reduce(
     (acc, prod) => acc + prod.cantidad * prod.precio,
     0
   );
 };
+
+//EL HTML
+const header = document.getElementById('header');
+header.appendChild(Header());
+
+CardContainer(productos, agregarAlCarrito);
