@@ -32,6 +32,22 @@ export const validatePassword = (password, password2) => {
   return '';
 };
 
+export const validateProduct = (product) => {
+  const length = new RegExp('(?=.{8,})');
+  if (!length.test(product.nombre)) {
+    return 'El nombre del producto debe tener al menos 8 caracteres';
+  } else if (!length.test(product.descripcion)) {
+    return 'La descripción del producto debe tener al menos 8 caracteres';
+  } else if (product.precio <= 0) {
+    return 'El precio del producto debe ser mayor a 0';
+  } else if (product.cantidad <= 0) {
+    return 'La cantidad del producto debe ser mayor a 0';
+  } else if (!product.imagen) {
+    return 'El producto debe tener una imagen';
+  }
+  return '';
+};
+
 export const financialFormat = ({
   amount,
   format = 'en-US',

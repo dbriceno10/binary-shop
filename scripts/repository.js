@@ -133,3 +133,13 @@ export const logout = () => {
   localStorage.removeItem('carrito');
   window.location.href = '/login.html';
 };
+
+export const createProduct = async (product, user) => {
+  const products = await getProducts();
+  product.id = new Date().getTime();
+  product.sellerId = user.id;
+  products.push(product);
+  localStorage.setItem('products', JSON.stringify(products));
+  alert('Producto creado exitosamente');
+  return true;
+};

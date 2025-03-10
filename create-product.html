@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Binary Shop</title>
+  <link rel="stylesheet" href="../styles/styles.css">
+  <link rel="stylesheet" href="../styles/headers.css">
+  <link rel="stylesheet" href="../styles/auth.css">
+
+</head>
+
+<body>
+  <header id="header"></header>
+  <main>
+    <form action="" class="authContainer" id="loginForm">
+      <h2 class="title">Crear Producto</h2>
+      <label class="label" for="nombre">Nombre</label>
+      <input id="nombre" class="input" type="text" name="nombre" required>
+      <label class="label" for="descripcion">Descripcion</label>
+      <input id="descripcion" class="input" type="text" name="descripcion" required>
+      <label class="label" for="precio">Precio</label>
+      <input id="precio" class="input" type="text" name="precio" required>
+      <label class="label" for="cantidad">Cantidad</label>
+      <input id="cantidad" class="input" type="text" name="cantidad" required>
+      <label class="label" for="imagen">Imagen</label>
+      <input id="imagen" class="input" type="file" name="imagen" accept="image/*" required>
+      <button class="baseBtn" type="submit">Crear producto</button>
+
+    </form>
+  </main>
+  <script type="module" src="./scripts/create-product.js"></script>
+</body>
+
+</html>

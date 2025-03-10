@@ -12,23 +12,25 @@ const user = JSON.parse(localStorage.getItem('user'));
 
 if (!user) {
   window.location.href = '/login.html';
-} else if (user.rol === roles.SELLER) {
-  window.location.href = '/seller.html';
 } else if (user.rol === roles.ADMIN) {
   window.location.href = '/admin.html';
+} else if (user.rol === roles.BUYER) {
+  window.location.href = '/index.html';
 }
 
 const render = async () => {
+  const createBtnContainer = document.getElementById('create');
+  createBtnContainer.innerHTML = '';
+  createBtnContainer.innerHTML = `
+    <a href="./create-product.html">
+      <button class="baseBtn">Crear producto</button>
+    </a>
+  `;
   let productos = await getProducts();
-  productos = productos.filter((prod) => prod.cantidad > 0);
-  CardContainer(productos, 'Agregar al carrito', 'Comprar');
-  productos.forEach((producto) => {
-    addEventListenersActionA(producto, addProductToCard);
-    addEventListenersActionB(producto, async (prod) => {
-      await buyProduct(prod);
-      await render();
-    });
-  });
+  productos = productos.filter(
+    (prod) => prod.cantidad > 0 && prod.sellerId === user.id
+  );
+  CardContainer(productos);
 };
 
 document.addEventListener('DOMContentLoaded', async () => {
