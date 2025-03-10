@@ -27,7 +27,6 @@ form.addEventListener('submit', async (event) => {
       cantidad,
       imagen: imageUrl,
     };
-    console.log(newProduct);
     const errorMessge = validateProduct(newProduct);
     if (errorMessge) {
       alert(errorMessge);

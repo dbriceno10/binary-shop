@@ -2,11 +2,12 @@ import { registerUser } from './repository.js';
 import { validatePassword } from './utils.js';
 import { updateUser } from './repository.js';
 
-import Header from '../components/header.js';
+import Header, {logoutEvent} from '../components/header.js';
 import { roles } from './constants.js';
 
 const header = document.getElementById('header');
 header.appendChild(Header());
+logoutEvent();
 
 const form = document.getElementById('loginForm');
 const name = document.getElementById('name').value;
