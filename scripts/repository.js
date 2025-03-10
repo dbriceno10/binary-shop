@@ -143,3 +143,27 @@ export const createProduct = async (product, user) => {
   alert('Producto creado exitosamente');
   return true;
 };
+
+export const deleteProduct = async (product) => {
+  const isConfirmed = confirm('¿Estás seguro de eliminar el producto?');
+  if (isConfirmed) {
+    const products = await getProducts();
+    localStorage.setItem(
+      'products',
+      JSON.stringify(products.filter((prod) => prod.id !== product.id))
+    );
+    alert('Producto eliminado exitosamente');
+  }
+}
+
+export const deleteUser = async (user) => {
+  const isConfirmed = confirm('¿Estás seguro de eliminar el usuario?');
+  if (isConfirmed) {
+    const users = await getUsers();
+    localStorage.setItem(
+      'users',
+      JSON.stringify(users.filter((usr) => usr.id !== user.id))
+    );
+    alert('Usuario eliminado exitosamente');
+  }
+}
