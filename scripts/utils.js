@@ -32,6 +32,7 @@ export const validatePassword = (password, password2) => {
   return '';
 };
 
+
 export const validateProduct = (product) => {
   const length = new RegExp('(?=.{8,})');
   if (!length.test(product.nombre)) {

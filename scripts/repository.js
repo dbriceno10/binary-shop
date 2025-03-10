@@ -154,7 +154,7 @@ export const deleteProduct = async (product) => {
     );
     alert('Producto eliminado exitosamente');
   }
-}
+};
 
 export const deleteUser = async (user) => {
   const isConfirmed = confirm('¿Estás seguro de eliminar el usuario?');
@@ -166,4 +166,14 @@ export const deleteUser = async (user) => {
     );
     alert('Usuario eliminado exitosamente');
   }
-}
+};
+
+export const updateUser = async (user) => {
+  const users = await getUsers();
+  const index = users.findIndex((usr) => usr.id === user.id);
+  const password = users[index].password;
+  users[index] = { ...user, password };
+  localStorage.setItem('users', JSON.stringify(users));
+  localStorage.setItem('user', JSON.stringify(user));
+  alert('Usuario actualizado exitosamente');
+};

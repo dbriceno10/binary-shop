@@ -10,13 +10,13 @@ const Header = () => {
     options = `<a href='../login.html'><button class="baseBtn">Login</button></a><a href='../register.html'><button class="baseBtn">Registro</button></a>`;
   } else {
     if (user.rol === roles.BUYER) {
-      options = `<a href='../index.html'><button class="baseBtn">Inicio</button></a><a href='../cart.html'><button class="baseBtn">Ir al carrito</button></a><button class="baseBtn" id="logout">Cerrar sesión</button>`;
+      options = `<a href='../index.html'><button class="baseBtn">Inicio</button></a><a href='../update-user.html'><button class="baseBtn">Actualizar perfil</button></a><a href='../cart.html'><button class="baseBtn">Ir al carrito</button></a><button class="baseBtn" id="logout">Cerrar sesión</button>`;
     }
     if (user.rol === roles.SELLER) {
       options = `<a href='../seller.html'><button class="baseBtn">Inicio</button></a><button class="baseBtn" id="logout">Cerrar sesión</button>`;
     }
     if (user.rol === roles.ADMIN) {
-      options = `<a href='../admin.html'><button class="baseBtn">Inicio</button></a><button class="baseBtn" id="logout">Cerrar sesión</button>`;
+      options = `<a href='../admin.html'><button class="baseBtn">Inicio</button></a><a href="../admin-users.html"><button class="baseBtn">Administrar usuarios</button></a><button class="baseBtn" id="logout">Cerrar sesión</button>`;
     }
   }
   div.innerHTML = `
