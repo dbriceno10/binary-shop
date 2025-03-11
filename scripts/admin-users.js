@@ -9,7 +9,7 @@ if (!user) {
   window.location.href = '/binary-shop/login.html';
 } else {
   if (user.rol !== roles.ADMIN) {
-    window.location.href = '/binary-shop/index.html';
+    window.location.href = '/binary-shop/';
   }
 }
 

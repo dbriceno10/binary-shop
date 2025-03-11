@@ -15,7 +15,7 @@ if (!user) {
 } else if (user.rol === roles.ADMIN) {
   window.location.href = '/binary-shop/admin.html';
 } else if (user.rol === roles.BUYER) {
-  window.location.href = '/binary-shop/index.html';
+  window.location.href = '/binary-shop/';
 }
 
 const render = async () => {

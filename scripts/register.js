@@ -38,7 +38,7 @@ form.addEventListener('submit', async (event) => {
     });
     if (response) {
       form.reset();
-      window.location.href = '/binary-shop/index.html';
+      window.location.href = '/binary-shop/';
     }
   }
 });
