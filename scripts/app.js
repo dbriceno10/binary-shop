@@ -11,11 +11,11 @@ import { roles } from './constants.js';
 const user = JSON.parse(localStorage.getItem('user'));
 
 if (!user) {
-  window.location.href = '/login.html';
+  window.location.href = '../login.html';
 } else if (user.rol === roles.SELLER) {
-  window.location.href = '/seller.html';
+  window.location.href = '../seller.html';
 } else if (user.rol === roles.ADMIN) {
-  window.location.href = '/admin.html';
+  window.location.href = '../admin.html';
 }
 
 const render = async () => {
