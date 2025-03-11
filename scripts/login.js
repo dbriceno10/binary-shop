@@ -14,6 +14,6 @@ form.addEventListener('submit', async (event) => {
   const response = await loginUser(username, password);
   if (response) {
     form.reset();
-    window.location.href = '/index.html';
+    window.location.href = '/binary-shop/index.html';
   }
 });

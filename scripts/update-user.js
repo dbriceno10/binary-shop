@@ -20,7 +20,7 @@ const expirationDate = document.getElementById('expirationDate').value;
 const user = JSON.parse(localStorage.getItem('user'));
 
 if (!user || user.rol !== roles.BUYER) {
-  window.location.href = '/index.html';
+  window.location.href = '/binary-shop/index.html';
 } else {
   name.value = user.name;
   lastName.value = user.lastName;

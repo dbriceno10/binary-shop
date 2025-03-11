@@ -35,7 +35,7 @@ form.addEventListener('submit', async (event) => {
       const response = await createProduct(newProduct, user);
       if (response) {
         form.reset();
-        window.location.href = '/seller.html';
+        window.location.href = '/binary-shop/seller.html';
       }
     }
   };

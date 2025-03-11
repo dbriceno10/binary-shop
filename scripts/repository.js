@@ -131,7 +131,7 @@ export const buyProducts = async (cartProducts) => {
 export const logout = () => {
   localStorage.removeItem('user');
   localStorage.removeItem('carrito');
-  window.location.href = '/login.html';
+  window.location.href = '/binary-shop/login.html';
 };
 
 export const createProduct = async (product, user) => {

@@ -8,10 +8,10 @@ import { roles } from './constants.js';
 const user = JSON.parse(localStorage.getItem('user'));
 
 if (!user) {
-  window.location.href = '/login.html';
+  window.location.href = '/binary-shop/login.html';
 } else {
   if (user.rol !== roles.ADMIN) {
-    window.location.href = '/index.html';
+    window.location.href = '/binary-shop/index.html';
   }
 }
 

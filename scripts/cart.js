@@ -19,7 +19,7 @@ import { financialFormat } from './utils.js';
 const user = JSON.parse(localStorage.getItem('user'));
 
 if (!user || user.rol !== roles.BUYER) {
-  window.location.href = '/login.html';
+  window.location.href = '/binary-shop/login.html';
 }
 
 const render = () => {
