@@ -3,7 +3,7 @@ export const getProducts = async () => {
   if (localStorage.getItem('products')) {
     products = JSON.parse(localStorage.getItem('products'));
   } else {
-    const data = await fetch('../database/productos.json');
+    const data = await fetch('/binary-shop/database/productos.json');
     products = await data.json();
     localStorage.setItem('products', JSON.stringify(products));
   }
@@ -15,7 +15,7 @@ export const getUsers = async () => {
   if (localStorage.getItem('users')) {
     users = JSON.parse(localStorage.getItem('users'));
   } else {
-    const response = await fetch('../database/usuarios.json');
+    const response = await fetch('/binary-shop/database/usuarios.json');
     users = await response.json();
     localStorage.setItem('users', JSON.stringify(users));
   }
