@@ -20,7 +20,7 @@ const Header = () => {
     }
   }
   div.innerHTML = `
-    <a href='/'><img src="/binary-shop/assets/logo-full.png" alt="binary-shop" title="Volver al inicio" id="binary-shop"></a>
+    <a href='/binary-shop'><img src="/binary-shop/assets/logo-full.png" alt="binary-shop" title="Volver al inicio" id="binary-shop"></a>
     <div>${options}</div>
   `;
   return div;
